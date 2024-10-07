@@ -1,0 +1,49 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 3rem 0;
+
+    .links {
+        grid-row-start: 3;
+        display: flex;
+        gap: 24px;
+    }
+    
+    .links a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .links img {
+        flex-shrink: 0;
+    }
+    
+    .credit {
+        display: flex;
+        justify-content: center;
+        font-size: 13px;
+        color: var(--color-text-secondary);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .links a:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+}
+
+@media (max-width: 600px) {
+    .links {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
