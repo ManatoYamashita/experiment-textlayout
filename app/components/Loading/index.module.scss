@@ -1,0 +1,58 @@
+.loading {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: grey;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loading .loader {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 25%;
+    height: 75px;
+    align-items: center;
+    justify-content: center; 
+    transform: scale(.6);
+}
+
+
+@-webkit-keyframes square-spin {
+    25% {
+      -webkit-transform: perspective(100px) rotateX(180deg) rotateY(0);
+              transform: perspective(100px) rotateX(180deg) rotateY(0); }
+    50% {
+      -webkit-transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+              transform: perspective(100px) rotateX(180deg) rotateY(180deg); }
+    75% {
+      -webkit-transform: perspective(100px) rotateX(0) rotateY(180deg);
+              transform: perspective(100px) rotateX(0) rotateY(180deg); }
+    100% {
+      -webkit-transform: perspective(100px) rotateX(0) rotateY(0);
+              transform: perspective(100px) rotateX(0) rotateY(0); } }
+  
+  @keyframes square-spin {
+    25% {
+      -webkit-transform: perspective(100px) rotateX(180deg) rotateY(0);
+              transform: perspective(100px) rotateX(180deg) rotateY(0); }
+    50% {
+      -webkit-transform: perspective(100px) rotateX(180deg) rotateY(180deg);
+              transform: perspective(100px) rotateX(180deg) rotateY(180deg); }
+    75% {
+      -webkit-transform: perspective(100px) rotateX(0) rotateY(180deg);
+              transform: perspective(100px) rotateX(0) rotateY(180deg); }
+    100% {
+      -webkit-transform: perspective(100px) rotateX(0) rotateY(0);
+              transform: perspective(100px) rotateX(0) rotateY(0); } }
+  
+  .square-spin > div {
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    width: 50px;
+    height: 50px;
+    background: grey;
+    -webkit-animation: square-spin 3s 0s cubic-bezier(0.09, 0.57, 0.49, 0.9) infinite;
+            animation: square-spin 3s 0s cubic-bezier(0.09, 0.57, 0.49, 0.9) infinite; }

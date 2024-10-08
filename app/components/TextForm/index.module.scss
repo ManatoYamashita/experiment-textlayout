@@ -1,13 +1,20 @@
+.label {
+    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
+}
 
 .textarea {
     font-size: 16px;
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
+    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
+    animation-delay: .5s;
 }
 .btn {
     padding: 10px 20px;
     margin-top: 10px;
     font-size: 16px;
     cursor: pointer;
+    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
+    animation-delay: 1s;
 }

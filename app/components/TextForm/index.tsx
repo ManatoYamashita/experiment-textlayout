@@ -1,44 +1,45 @@
 'use client';
 
 import React, { useState } from 'react';
-import TextLayout from '@/components/TextLayout';
+import { useRouter } from 'next/navigation';
 import styles from './index.module.scss';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 
 export default function TextLayoutForm() {
   const [inputText, setInputText] = useState('');
-  const [submittedText, setSubmittedText] = useState('');
+  const router = useRouter();
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmittedText(inputText);
+    router.push(`/layouted?text=${encodeURIComponent(inputText)}`);
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.metaKey && e.key === 'Enter') {
-      setSubmittedText(inputText);
+      router.push(`/layouted?text=${encodeURIComponent(inputText)}`);
     }
   }
 
   return (
-    <div>
+    <>
       <form onSubmit={onSubmit}>
-        <label htmlFor="text">文章を入力</label>
+        <label htmlFor="paragraph" className={styles.label}>文章を入力して送信してください</label>
         <Textarea
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="プレーンテキストを入力し、『Command + Enter』（Ctrl + Enter）でレイアウト適用"
-          id="text"
+          placeholder="Type your plain-text here and press Command + Enter(Ctrl + Enter) to submit."
+          id="paragraph"
           rows={6}
           cols={60}
           className={styles.textarea}
         />
-        <Button className={styles.btn}>適用（Command + Enter）</Button>
+        <Button className={styles.btn}>
+            <strong>送信！</strong>
+            <small>（Command + Enter）</small>
+        </Button>
       </form>
-
-      {submittedText && <TextLayout text={submittedText} />}
-    </div>
+    </>
   );
 }

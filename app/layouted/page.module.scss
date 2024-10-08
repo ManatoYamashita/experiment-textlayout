@@ -1,0 +1,18 @@
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    margin: auto 0;
+    overflow-y: scroll;
+    font-family: var(--font-geist-sans);
+    transition: all 1s ease;
+
+    .title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin: 1rem 0;
+        text-align: center;
+    }
+}

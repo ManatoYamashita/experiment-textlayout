@@ -30,8 +30,8 @@ export async function POST(request: Request) {
           const tokens = tokenizer.tokenize(paragraph);
           const lines: string[] = [];
           let currentLine = '';
-          const maxLineWidth = 350; // 単位: px
-          const minLineWidth = 300; // 単位: px
+          const maxLineWidth = 300; // 単位: px
+          const minLineWidth = 250; // 単位: px
           let currentLineWidth = 0;
 
           tokens.forEach((token, index) => {

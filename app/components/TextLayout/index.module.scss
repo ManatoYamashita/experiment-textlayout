@@ -1,8 +1,32 @@
 .layoutedParagraph {
     white-space: pre-wrap;
     margin: 1rem 0;
+    height: 100vh;
+
+    .loadingWrap {
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        color: grey;
+    }
 
     .whiteLine {
         margin: 1rem 0;
+    }
+
+    .line {
+        margin-bottom: 0;
+        line-height: 1.7;
+        opacity: 0;
+        transform: translateY(20px);
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .layoutedParagraph {
+        .line {
+            font-size: 14px;
+        }
     }
 }

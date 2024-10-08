@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+
+  .link {
+    .alow {
+        margin-left: .5rem;
+        transition: all 0.3s ease;
+    }
+  }
+
+  .link:hover .alow {
+    margin-left: .25rem;
+  }
+  
+}
