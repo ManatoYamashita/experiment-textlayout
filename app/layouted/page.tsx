@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import TextLayout from '@/components/TextLayout';
 import styles from './page.module.scss';
@@ -21,7 +22,9 @@ export default function LayoutPage() {
   return (
     <div className={styles.layoutContainer}>
       <h1 className={styles.title}>✨Looks good?</h1>
-        <TextLayout text={text} />
+        <Suspense>
+          <TextLayout text={text} />
+        </Suspense>
     </div>
   );
 }
