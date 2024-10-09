@@ -21,11 +21,12 @@ export default function LayoutPage() {
   }
 
   return (
-    <div className={styles.layoutContainer}>
-      <h1 className={styles.title}>✨Looks good?</h1>
-      <Suspense fallback={<div><Loading /></div>}>
-        <TextLayout text={text} />
-      </Suspense>
-    </div>
+    <Suspense fallback={<Loading />}>
+      <div className={styles.layoutContainer}>
+        <h1 className={styles.title}>✨Looks good?</h1>
+        {/* Suspense に fallback を追加 */}
+          <TextLayout text={text} />
+      </div>
+    </Suspense>
   );
 }
