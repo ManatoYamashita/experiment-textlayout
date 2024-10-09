@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 
 export const siteMetadata: Metadata = {
+    metadataBase: new URL('https://text-layout.manapuraza.com'),
     title: "日本語テキスト自動レイアウトシステム",
     description: "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
     icons: {
