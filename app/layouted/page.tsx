@@ -25,7 +25,7 @@ export default function LayoutPage({ searchParams }: LayoutPageProps) {
       <h1 className={styles.title}>✨Looks good?</h1>
       <TextLayout text={text} />
       <div className="text-center">
-        <Link href="/" aria-label='もう一度試す（retry）'>
+        <Link href="/" aria-label='もう一度試す（retry）' className={styles.retryBtn}>
           <Button>
               もう一度試す (retry)
           </Button>

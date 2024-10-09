@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: stretch;
     margin: auto 0;
-    overflow-y: scroll;
     font-family: var(--font-geist-sans);
     transition: all 1s ease;
 
@@ -14,5 +13,10 @@
         font-weight: bold;
         margin: 1rem 0;
         text-align: center;
+    }
+
+    .retryBtn {
+        margin: 1rem 0 1rem 0;
+        padding-bottom: 3rem;
     }
 }

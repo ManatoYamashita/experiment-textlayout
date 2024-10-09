@@ -3,6 +3,17 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
+  .logo {
+    font-size: 12px;
+    line-height: 1;
+    font-family: 'Roboto', sans-serif;
+    color: #bbb;
+  }
+  .logo:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }
 
 .nav {

@@ -9,12 +9,7 @@ import UsageImg from "../../public/images/usage.webp"
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
-      <h1 className="text-3xl font-bold mb-6 text-center">日本語文章自動レイアウトWebアプリ</h1>
-      <div className="text-center">
-      <Link href="/" aria-label="使ってみる">
-        <Button>使ってみる</Button>
-      </Link>
-      </div>
+      <h1 className="text-3xl font-bold mb-6 text-center">文章自動レイアウトWebApp</h1>
       <div className="mb-6">
         <Image
           src={HeroImg}
@@ -26,7 +21,13 @@ export default function AboutPage() {
       </div>
       
       <div className="space-y-4 mb-8">
-        <p>このプロジェクトは、日本語の文章を自動でレイアウトするWebアプリです。視線移動を最適化し、読みやすさを向上させるために、ステップ状や段階的な行のレイアウトを採用しています。この方法により、読み速度を向上させ、理解度を損なわずにスムーズな読書体験を提供します。</p>
+        <p>このプロジェクトは、文章を自動でレイアウトするWebアプリです。視線移動を最適化し、読みやすさを向上させるために、ステップ状や段階的な行のレイアウトを採用しています。この方法により、読み速度を向上させ、理解度を損なわずにスムーズな読書体験を提供します。</p>
+
+        <div className="text-center m-5">
+          <Link href="/" aria-label="使ってみる">
+            <Button>使ってみる</Button>
+          </Link>
+        </div>
 
         <h2 className={styles.h2}>特徴</h2>
         <ul>
@@ -44,7 +45,7 @@ export default function AboutPage() {
           className="rounded-lg w-full h-auto object-cover"
         />
         <ol>
-            <li><strong>テキスト入力</strong>: ユーザーが日本語の文章をテキストボックスに入力します。</li>
+            <li><strong>テキスト入力</strong>: ユーザーが文章をテキストボックスに入力します。</li>
             <li><strong>テキスト処理</strong>: アプリは、形態素解析を使用して文章を文節ごとに分割し、レイアウトの論理を適用します。</li>
             <li><strong>動的レイアウト生成</strong>: JavaScript(形態素解析とレイアウトとアニメーション)とCSS(レイアウト)を使用して、文節ごとに段階的なレイアウトを動的に表示します。</li>
             <li><strong>読書体験</strong>: ユーザーはスムーズに視線を移動（サッカードと停留）し、効率的に文章を読むことができます。</li>
@@ -96,7 +97,7 @@ export default function AboutPage() {
             <li>初回のみレイアウトが行われないバグがたまにあります。</li>
             <li>スクロールができることをユーザに伝える必要があると思っています。</li>
             <li>カスタマイズオプション（フォントサイズやカラースキームなど）の追加。</li>
-            <li>縦書き日本語テキストのレイアウト対応。</li>
+            <li>縦書テキストのレイアウト対応。</li>
             <li>ユーザーが自由にレイアウトを調整できる機能の導入。</li>
         </ul>
 

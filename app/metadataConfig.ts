@@ -2,15 +2,15 @@ import { Metadata } from 'next';
 
 export const siteMetadata: Metadata = {
     metadataBase: new URL('https://text-layout.manapuraza.com'),
-    title: "日本語テキスト自動レイアウトシステム",
-    description: "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
+    title: "文章自動レイアウトWebApp",
+    description: "プレーンテキストをDNPの研究に基づき再レイアウトするWepシステムです。",
     icons: {
         icon: 'icon.png',
         apple: 'icon.png',
     },
     openGraph: {
-        title: "日本語テキスト自動レイアウトシステム",
-        description: "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
+        title: "文章自動レイアウトWebApp",
+        description: "プレーンテキストをDNPの研究に基づき再レイアウトするWebAppです。",
         url: "https://text-relayout.manapuraza.com",
         siteName: '関研究室 - 山下マナト',
         images: [
@@ -18,7 +18,7 @@ export const siteMetadata: Metadata = {
             url: 'https://text-layout.vercel.app/ogp.png',
             width: 1200,
             height: 630,
-            alt: '日本語テキスト自動レイアウトシステム',
+            alt: '文章自動レイアウトWebApp',
         },
         ],
         locale: 'ja_JP',
@@ -26,14 +26,14 @@ export const siteMetadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: '日本語テキスト自動レイアウトシステム',
-        description: 'プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。',
+        title: '文章自動レイアウトWebApp',
+        description: 'プレーンテキストをDNPの研究に基づき再レイアウトするシステムです。',
         images: [
         {
             url: 'https://text-layout.vercel.app/ogp.png',
             width: 1200,
             height: 630,
-            alt: '日本語テキスト自動レイアウトシステム',
+            alt: '文章自動レイアウトWebApp',
         },
         ],
     }

@@ -33,7 +33,7 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
-                "name": "日本語テキスト自動レイアウトシステム",
+                "name": "文章自動レイアウトWebApp",
                 "url": "https://text-layout.manapuraza.com",
                 "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
                 "applicationCategory": "Productivity",

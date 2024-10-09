@@ -1,4 +1,4 @@
-# Japanese Text Auto-Layout Web App
+# 文章自動レイアウトWebApp - Text auto-Layout webApp
 
 ![japanese-auto-layout](https://github.com/user-attachments/assets/3bcc5734-635d-475e-98e6-37e0b6ef368f)
 

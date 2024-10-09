@@ -8,10 +8,10 @@
     align-items: center;
 
     .loadingWrap {
-        justify-content: center;
-        align-items: center;
-        height: 100px;
-        color: grey;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        height: 200px;
     }
 
     .whiteLine {

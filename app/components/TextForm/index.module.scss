@@ -25,11 +25,12 @@
       
     .btnInverted {
         background-color: whitesmoke;
-        border: 2px solid black;
+        border: 1px solid black;
     }
     
     .btnInverted > .strong,
     .btnInverted > .small {
-        color: #333;
+        color: black;
+        font-weight: normal;
     }
 }
