@@ -7,7 +7,8 @@ import logo from '../../../public/images/sekilab-logo.webp';
 const Header: React.FC = () => {
   return (
     <header className={styles.header}>
-      <Link href="https://www.comm.tcu.ac.jp/seki-ken" className={styles.logo} aria-label='東京都市大学 関研究室 情報セキュリティ'>
+      {/* <Link href="https://www.comm.tcu.ac.jp/seki-ken" className={styles.logo} aria-label='東京都市大学 関研究室 情報セキュリティ'> */}
+      <Link href="https://manapuraza.com" className={styles.logo} aria-label='東京都市大学 関研究室 情報セキュリティ'>
         <Image
             src={logo}
             alt='Seki Labo'
