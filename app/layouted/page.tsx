@@ -21,7 +21,7 @@ export default function LayoutPage() {
   return (
     <div className={styles.layoutContainer}>
       <h1 className={styles.title}>✨Looks good?</h1>
-      <TextLayout text={text} />
+        <TextLayout text={text} />
     </div>
   );
 }

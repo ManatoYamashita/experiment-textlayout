@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
+import { siteMetadata } from "./metadataConfig";
 import localFont from "next/font/local";
+import Head from "next/head";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+
+export const metadata = siteMetadata;
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,11 +18,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "文章自動レイアウトシステム",
-  description: "プレーンテキストをDNPの研究にもと付いてさいレイアウトするプログラムです。",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,10 +25,45 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "日本語テキスト自動レイアウトシステム",
+                "url": "https://text-layout.manapuraza.com",
+                "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "All",
+                "browserRequirements": "Requires JavaScript and a modern web browser",
+                "softwareVersion": "1.0.0",
+                "author": {
+                  "@type": "Organization",
+                  "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
+                  "url": "https://text-layout.manapuraza.com",
+                  "logo": "https://text-layout.manapuraza.com/logo.png",
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "03-5707-0104",
+                    "contactType": "Customer Support",
+                    "availableLanguage": ["English", "Japanese"]
+                  }
+                },
+              }
+              
+            ),
+          }}
+        />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <main className="main">
           <Header />
-          {children}
+          <div className="pageContainer">
+            {children}
+          </div>
           <Footer
             credit1="先行研究(DNP, 2020)"
             credit2="Github"
