@@ -1,20 +1,34 @@
-.label {
-    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
-}
+.formContainer {
+    will-change: visibility;
+    overflow: hidden;
+    visibility: hidden;
+    transition: all .2s;
 
-.textarea {
-    font-size: 16px;
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
-    animation-delay: .5s;
-}
-.btn {
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    animation: SlideUpIn cubic-bezier(0.075, 0.82, 0.165, 1) .5s forwards;
-    animation-delay: 1s;
+    .label {
+        cursor: pointer;
+    }
+    
+    .textarea {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .btn {
+        padding: 10px 20px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all .2s;
+    }
+      
+    .btnInverted {
+        background-color: #ccc;
+        border: 2px solid black;
+    }
+    
+    .btnInverted > .strong,
+    .btnInverted > .small {
+        color: #333;
+    }
 }

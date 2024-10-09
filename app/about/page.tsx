@@ -3,16 +3,21 @@ import { Button } from "@/components/ui/button"
 import styles from "./page.module.scss"
 import Link from "next/link"
 
-import ogpImage from "@/ogp.png"
+import HeroImg from "../../public/images/text-layout-system.webp"
+import UsageImg from "../../public/images/usage.webp"
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8 max-w-2xl">
       <h1 className="text-3xl font-bold mb-6 text-center">日本語文章自動レイアウトWebアプリ</h1>
-      
+      <div className="text-center">
+      <Link href="/" aria-label="使ってみる">
+        <Button>使ってみる</Button>
+      </Link>
+      </div>
       <div className="mb-6">
         <Image
-          src={ogpImage}
+          src={HeroImg}
           alt="Profile picture"
           width={640}
           height={360}
@@ -31,19 +36,29 @@ export default function AboutPage() {
         </ul>
 
         <h2 className={styles.h2}>使い方</h2>
+        <Image
+          src={UsageImg}
+          alt="Auto text layout system"
+          width={640}
+          height={360}
+          className="rounded-lg w-full h-auto object-cover"
+        />
         <ol>
             <li><strong>テキスト入力</strong>: ユーザーが日本語の文章をテキストボックスに入力します。</li>
             <li><strong>テキスト処理</strong>: アプリは、形態素解析を使用して文章を文節ごとに分割し、レイアウトの論理を適用します。</li>
-            <li><strong>動的レイアウト生成</strong>: JavaScriptとCSSを使用して、文節ごとに段階的なレイアウトを動的に表示します。</li>
-            <li><strong>読書体験</strong>: ユーザーはスムーズに視線を移動し、効率的に文章を読むことができます。</li>
+            <li><strong>動的レイアウト生成</strong>: JavaScript(形態素解析とレイアウトとアニメーション)とCSS(レイアウト)を使用して、文節ごとに段階的なレイアウトを動的に表示します。</li>
+            <li><strong>読書体験</strong>: ユーザーはスムーズに視線を移動（サッカードと停留）し、効率的に文章を読むことができます。</li>
         </ol>
 
         <h2 className={styles.h2}>使用技術</h2>
         <ul>
-            <li><strong>JavaScript</strong>: ブラウザ上で動的にテキストをレイアウトします。</li>
-            <li><strong>形態素解析</strong>: 日本語テキストを文節に分解します。</li>
-            <li><strong>CSS</strong>: 柔軟なテキストのフォーマットとレスポンシブデザインを実現します。</li>
-            <li><strong>GSAP</strong>: （オプション）テキストアニメーションの導入が可能です。</li>
+            <li><strong>Next.js ver14(Approuter) with TypeScript(JavaScript)</strong>: ブラウザ上で動的にテキストをレイアウトします。</li>
+            <li><strong>Kuromoji(形態素解析)</strong>: 日本語テキストを文節に分解します。</li>
+            <li><strong>SCSS</strong>: 柔軟なテキストのフォーマットとレスポンシブデザインを実現します。</li>
+            <li><strong>Shadcn/ui(Radix, tailWindCSS)</strong>: ユーザーインターフェースの構築に使用します。</li>
+            <li><strong>ESLint & Prettier</strong>: コードの品質を保つために使用します。</li>
+            <li><strong>GSAP</strong>: テキストアニメーションの導入</li>
+            <li><strong>Vercel</strong>: 高速な配信</li>
         </ul>
 
         <h2 className={styles.h2}>研究の背景</h2>
@@ -59,22 +74,27 @@ export default function AboutPage() {
         <h2 className={styles.h2}>インストール</h2>
         <p>ローカルでアプリを実行するには：</p>
 
-        <pre className={styles.pre}><code className={styles.code}>git clone https://github.com/your-repo/text-layout-app.git
-        cd text-layout-app
-        npm install
-        npm run dev</code></pre>
+        <pre className={styles.pre}>
+          <code className={styles.code}>
+            git clone https://github.com/your-repo/text-layout-app.git
+          </code>
+          <code className={styles.code}>
+            cd text-layout-app
+          </code>
+          <code className={styles.code}>
+            npm install
+          </code>
+          <code className={styles.code}>
+            npm run dev
+          </code>
+        </pre>
 
-        <p>その後、ブラウザで <code>http://localhost:3000</code> にアクセスしてください。</p>
-
-        <h2 className={styles.h2}>使用方法</h2>
-        <ol>
-            <li>テキストボックスに日本語の文章を入力します。</li>
-            <li>「ステップレイアウトに変換」ボタンを押します。</li>
-            <li>自動的に最適化されたレイアウトが表示されます。</li>
-        </ol>
+        <p>その後、ブラウザで <code className={styles.code}>http://localhost:3000</code> にアクセスしてください。</p>
 
         <h2 className={styles.h2}>今後の課題</h2>
         <ul>
+            <li>初回のみレイアウトが行われないバグがたまにあります。</li>
+            <li>スクロールができることをユーザに伝える必要があると思っています。</li>
             <li>カスタマイズオプション（フォントサイズやカラースキームなど）の追加。</li>
             <li>縦書き日本語テキストのレイアウト対応。</li>
             <li>ユーザーが自由にレイアウトを調整できる機能の導入。</li>

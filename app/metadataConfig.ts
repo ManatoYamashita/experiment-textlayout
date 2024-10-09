@@ -15,7 +15,7 @@ export const siteMetadata: Metadata = {
         siteName: '関研究室 - 山下マナト',
         images: [
         {
-            url: '/ogp.png',
+            url: 'https://text-layout.vercel.app/ogp.png',
             width: 1200,
             height: 630,
             alt: '日本語テキスト自動レイアウトシステム',
@@ -30,7 +30,7 @@ export const siteMetadata: Metadata = {
         description: 'プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。',
         images: [
         {
-            url: '/ogp.png',
+            url: 'https://text-layout.vercel.app/ogp.png',
             width: 1200,
             height: 630,
             alt: '日本語テキスト自動レイアウトシステム',

@@ -66,7 +66,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
           href={c4url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label='tcu'
+          aria-label='東京都市大学'
         >
           <small>
             {credit4}
