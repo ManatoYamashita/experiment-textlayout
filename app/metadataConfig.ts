@@ -31,7 +31,7 @@ export const siteMetadata: Metadata = {
         site: '@manapuraza',
         images: [
         {
-            url: '/public/images/ogp.png',
+            url: '/images/ogp.png',
             width: 1200,
             height: 630,
             alt: '文章自動レイアウトWebApp',
