@@ -51,6 +51,11 @@
             align-items: center;
             justify-content: center;
             font-size: smaller;
+            gap: 12px;
+
+            a {
+                gap: 4px;
+            }
         }
         .credit {
             font-size: 13px;

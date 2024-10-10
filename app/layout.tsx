@@ -17,6 +17,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const HiraginoKakuGothic = localFont({
+  src: "./fonts/hiragino-kaku-gothic-w3.woff",
+  variable: "--font-hiragino-kaku-gothic-w3",
+  weight: "300",
+});
 
 export default function RootLayout({
   children,
@@ -58,7 +63,7 @@ export default function RootLayout({
           }}
         />
       </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${HiraginoKakuGothic.variable}`}>
         <main className="main">
           <Header />
           <div className="pageContainer">

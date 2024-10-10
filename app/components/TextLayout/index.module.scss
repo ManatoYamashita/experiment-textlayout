@@ -19,8 +19,12 @@
     }
 
     .line {
+        font-family: var(--font-hiragino-kaku-gothic-w3);
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16.63px;
         margin-bottom: 0;
-        line-height: 1.7;
+        line-height: 1.6;
         opacity: 0;
         transform: translateY(20px);
         white-space: nowrap;

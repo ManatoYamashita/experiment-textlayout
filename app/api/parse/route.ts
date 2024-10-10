@@ -35,21 +35,21 @@ export async function POST(request: Request) {
       const tokens = tokenizer.tokenize(paragraph);
       const lines: string[] = [];
       let currentLine = '';
-      const maxLineWidth = 300; // 単位: px
-      const minLineWidth = 250; // 単位: px
+      const minLineWidth = 332.6; // 大体20文字
+      const maxLineWidth = 498.9; // 大体30文字
       let currentLineWidth = 0;
 
       tokens.forEach((token, index) => {
         const word = token.surface_form;
         const pos = token.pos; // 品詞情報
-        const wordWidth = word.length * 10; // 仮に全角文字1文字あたり10pxと仮定
+        const wordWidth = word.length * 16.63; // 全角文字1文字あたり16.63pxと仮定
 
         // 単語を追加して最大行幅を超えるか確認
         if (currentLineWidth + wordWidth > maxLineWidth && currentLine !== '') {
           // 文節で改行
           if (
             currentLineWidth >= minLineWidth &&
-            !['。', '、', '「', '」'].includes(word)
+            !['。', '、', '「', '」'].includes(word) // これらの記号は行頭に来ない（1分ばな奈熱に含める）
           ) {
             lines.push(currentLine); // 現在の行を確定
             currentLine = word; // 新しい行を開始

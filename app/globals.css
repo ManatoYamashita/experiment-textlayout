@@ -129,6 +129,10 @@ footer {
 
 /* スマートフォン表示の時 */
 @media (max-width: 600px) {
+  .pageContainer {
+    height: auto;
+    padding: 1rem;
+  }
   main.main {
     padding: 3rem 1rem;
   }
