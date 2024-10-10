@@ -48,7 +48,7 @@ export default function TextLayoutForm() {
     <>
       <form onSubmit={onSubmit} className={styles.formContainer}>
         <label htmlFor="paragraph" className={styles.label}>
-          文章を入力して送信してください（長すぎるテキストはエラーを起こす場合があります）
+          文章を入力して送信してください（3500文字~4000文字くらい）
         </label>
         <Textarea
           value={inputText}
