@@ -70,7 +70,7 @@ export default function RootLayout({
             credit3="Docs →"
             credit4="©︎2024 東京都市大学メディア情報学部情報システム学科 関研究室 山下マナト"
             c1url="https://www.dnp.co.jp/news/detail/10158391_1587.html"
-            c2url="https://github.com/ManatoYamashita/text-relayout"
+            c2url="https://github.com/ManatoYamashita/text-layout"
             c3url="/about"
             c4url="https://manapuraza.com"
           />
