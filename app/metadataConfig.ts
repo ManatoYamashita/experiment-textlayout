@@ -15,7 +15,7 @@ export const siteMetadata: Metadata = {
         siteName: '関研究室 - 山下マナト',
         images: [
         {
-            url: 'ogp.png',
+            url: '/images/ogp.png',
             width: 1200,
             height: 630,
             alt: '文章自動レイアウトWebApp',
@@ -31,7 +31,7 @@ export const siteMetadata: Metadata = {
         site: '@manapuraza',
         images: [
         {
-            url: 'ogp.png',
+            url: '/public/images/ogp.png',
             width: 1200,
             height: 630,
             alt: '文章自動レイアウトWebApp',
