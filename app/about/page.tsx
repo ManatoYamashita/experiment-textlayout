@@ -19,7 +19,7 @@ export default function AboutPage() {
       gsap.set(".animate-text", { opacity: 0, y: 20 });
 
       // 画像とボタンの初期設定
-      gsap.set(".animate-slide", { y: 50 });
+      gsap.set(".animate-slide", { y: 100 });
 
       // テキストのアニメーション
       gsap.to(".animate-text", {
