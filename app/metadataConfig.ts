@@ -3,14 +3,14 @@ import { Metadata } from 'next';
 export const siteMetadata: Metadata = {
     metadataBase: new URL('https://text-layout.manapuraza.com'),
     title: "文章自動レイアウトWebApp",
-    description: "プレーンテキストをDNPの研究に基づき再レイアウトするWepシステムです。",
+    description: "プレーンテキストをDNPの論文に基づいた方法で再レイアウトするWebAppです。",
     icons: {
         icon: 'icon.png',
         apple: 'icon.png',
     },
     openGraph: {
         title: "文章自動レイアウトWebApp",
-        description: "プレーンテキストをDNPの研究に基づき再レイアウトするWebAppです。",
+        description: "プレーンテキストをDNPの論文に基づいた方法で再レイアウトするWebAppです。",
         url: "https://text-layout.manapuraza.com",
         siteName: '関研究室 - 山下マナト',
         images: [
@@ -27,7 +27,7 @@ export const siteMetadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: '文章自動レイアウトWebApp',
-        description: 'プレーンテキストをDNPの研究に基づき再レイアウトするシステムです。',
+        description: 'Plain-textをDNPの論文に基づいた方法で再レイアウトするWebAppです。',
         site: '@manapuraza',
         images: [
         {
