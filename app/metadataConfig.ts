@@ -11,7 +11,7 @@ export const siteMetadata: Metadata = {
     openGraph: {
         title: "文章自動レイアウトWebApp",
         description: "プレーンテキストをDNPの研究に基づき再レイアウトするWebAppです。",
-        url: "https://text-relayout.manapuraza.com",
+        url: "https://text-layout.manapuraza.com",
         siteName: '関研究室 - 山下マナト',
         images: [
         {
@@ -28,9 +28,10 @@ export const siteMetadata: Metadata = {
         card: 'summary_large_image',
         title: '文章自動レイアウトWebApp',
         description: 'プレーンテキストをDNPの研究に基づき再レイアウトするシステムです。',
+        site: '@manapuraza',
         images: [
         {
-            url: '/_next/ogp.png',
+            url: 'ogp.png',
             width: 1200,
             height: 630,
             alt: '文章自動レイアウトWebApp',
