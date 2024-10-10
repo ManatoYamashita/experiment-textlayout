@@ -17,4 +17,30 @@
 
 .h2 {
     font-size: 1.5rem;
+    animation: fadeUpIn 0.5s ease;
+}
+
+.unorderList {
+    list-style-type: disc;
+    margin: 0 0 1em 1em;
+
+    .list {
+        margin-bottom: 1rem;
+    }
+}
+
+.anchorLink {
+    color: black;
+    text-decoration: underline;
+    transition: all .3s;
+
+    &:hover {
+        color: #333;
+        text-decoration: dashed;
+    }
+}
+
+.tryBtn {
+    width: 100%;
+    margin: 2rem 0;
 }
