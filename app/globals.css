@@ -33,20 +33,14 @@ header {
 }
 
 main.main {
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  height: 100svh;
-  overflow: hidden;
-  padding: 80px;
-  gap: 64px;
+  height: 100%;
+  padding: 30svh 80px;
   font-family: var(--font-geist-sans);
   transition: padding 0.2s;
 }
 
 .pageContainer {
-  height: 60svh;
-  overflow: scroll;
+  height: 100%;
   padding: 1rem;
 }
 
@@ -134,7 +128,7 @@ footer {
     padding: 1rem;
   }
   main.main {
-    padding: 3rem 1.5rem;
+    padding: 30svh 1.5rem;
   }
 }
 

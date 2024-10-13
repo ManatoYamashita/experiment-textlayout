@@ -47,7 +47,7 @@
 
 @media (max-width: 600px) {
     .footer {
-
+        // padding: 1.4rem 2.2rem 2.2rem 2.2rem;
         .links {
             flex-wrap: wrap;
             align-items: center;
@@ -61,6 +61,8 @@
         }
         .credit {
             font-size: 13px;
+            word-break: break-all;
+            text-align: center;
         }
     }
 }
