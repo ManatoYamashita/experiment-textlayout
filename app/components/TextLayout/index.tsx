@@ -17,13 +17,16 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
 
   useEffect(() => {
     const fetchParsedText = async () => {
+      console.log("text(入力されたテキスト): ", text);
       setLoading(true);
+      // バッグエンドにテキストを送信して解析結果を取得
       const response = await fetch('/api/parse', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
       });
       const data = await response.json();
+      // console.log("data(バッグエンドからもらった): ", data);
       setLines(data.lines);
       setLoading(false);
     };

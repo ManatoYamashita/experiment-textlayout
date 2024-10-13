@@ -41,6 +41,7 @@ main.main {
   padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+  transition: padding 0.2s;
 }
 
 .pageContainer {
@@ -134,7 +135,7 @@ footer {
     padding: 1rem;
   }
   main.main {
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
   }
 }
 

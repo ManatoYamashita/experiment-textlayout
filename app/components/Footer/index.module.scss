@@ -11,10 +11,12 @@
     background-color: white;
     z-index: 1;
 
+
     .links {
         grid-row-start: 3;
         display: flex;
         gap: 24px;
+        transition: font-size 0.2s;
     }
     
     .links a {

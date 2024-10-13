@@ -33,58 +33,65 @@ export async function POST(request: Request) {
       }
 
       const tokens = tokenizer.tokenize(paragraph);
-      const lines: string[] = [];
-      let currentLine = '';
-      const minLineWidth = 332.6; // 大体20文字
-      const maxLineWidth = 498.9; // 大体30文字
-      let currentLineWidth = 0;
+
+      // 文節のリストを作成
+      const bunsetsuList: string[] = [];
+      let currentBunsetsu = '';
 
       tokens.forEach((token, index) => {
-        const word = token.surface_form;
-        const pos = token.pos; // 品詞情報
-        const wordWidth = word.length * 16.63; // 全角文字1文字あたり16.63pxと仮定
+        const pos = token.pos;
+        const posDetail1 = token.pos_detail_1;
+        const surface = token.surface_form;
 
-        // 単語を追加して最大行幅を超えるか確認
-        if (currentLineWidth + wordWidth > maxLineWidth && currentLine !== '') {
-          // 文節で改行
-          if (
-            currentLineWidth >= minLineWidth &&
-            !['。', '、', '「', '」'].includes(word) // これらの記号は行頭に来ない（1分ばな奈熱に含める）
-          ) {
-            lines.push(currentLine); // 現在の行を確定
-            currentLine = word; // 新しい行を開始
-            currentLineWidth = wordWidth;
-          } else {
-            currentLine += word;
-            currentLineWidth += wordWidth;
+        // 自立語の判定
+        const isIndependent = pos === '名詞' || pos === '動詞' || pos === '形容詞' || pos === '副詞' || pos === '連体詞' || pos === '感動詞';
+
+        if (isIndependent) {
+          // 現在の文節をリストに追加し、新しい文節を開始
+          if (currentBunsetsu !== '') {
+            bunsetsuList.push(currentBunsetsu);
           }
+          currentBunsetsu = surface;
         } else {
-          currentLine += word;
-          currentLineWidth += wordWidth;
+          // 付属語を現在の文節に追加
+          currentBunsetsu += surface;
         }
 
-        // 文節の終わり、または助詞・助動詞が続かない場合に改行
-        if ((pos !== '助詞' && pos !== '助動詞') || index === tokens.length - 1) {
-          if (
-            currentLineWidth >= minLineWidth &&
-            !['。', '、'].includes(word) &&
-            currentLine !== ''
-          ) {
-            lines.push(currentLine); // 行を確定
-            currentLine = '';
-            currentLineWidth = 0;
-          }
+        // 最後のトークンの場合、現在の文節をリストに追加
+        if (index === tokens.length - 1 && currentBunsetsu !== '') {
+          bunsetsuList.push(currentBunsetsu);
         }
       });
 
-      if (currentLine) {
+      // 文節間で改行を行い、行幅を調整
+      const lines: string[] = [];
+      let currentLine = '';
+      const minLineWidth = 332.6; // 約20文字分の幅
+      const maxLineWidth = 498.9; // 約30文字分の幅
+      let currentLineWidth = 0;
+
+      bunsetsuList.forEach((bunsetsu, index) => {
+        const bunsetsuWidth = bunsetsu.length * 16.63; // 文字幅を計算
+
+        if (currentLineWidth + bunsetsuWidth > maxLineWidth && currentLine !== '') {
+          // 行幅が最大を超える場合、現在の行を確定
+          lines.push(currentLine);
+          currentLine = bunsetsu;
+          currentLineWidth = bunsetsuWidth;
+        } else {
+          // 文節を現在の行に追加
+          currentLine += bunsetsu;
+          currentLineWidth += bunsetsuWidth;
+        }
+      });
+
+      if (currentLine !== '') {
         lines.push(currentLine); // 最後の行を追加
       }
 
       allLines.push(lines);
     });
 
-    // JSONレスポンスを返す
     return NextResponse.json({ lines: allLines });
   } catch (err: unknown) {
     console.error(err);
