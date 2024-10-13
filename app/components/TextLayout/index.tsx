@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from './index.module.scss';
 import Loading from '@/components/Loading';
+import { loadDefaultJapaneseParser } from 'budoux';
 
 interface TextLayoutProps {
   text: string;
@@ -16,22 +17,54 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
   const paragraphsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const fetchParsedText = async () => {
-      console.log("text(入力されたテキスト): ", text);
+    const parseText = async () => {
       setLoading(true);
-      // バッグエンドにテキストを送信して解析結果を取得
-      const response = await fetch('/api/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
+
+      // BudouXの日本語パーサーをロード
+      const parser = loadDefaultJapaneseParser();
+
+      // テキストを段落ごとに分割
+      const paragraphs = text.split(/\n/);
+
+      const allLines: string[][] = [];
+
+      paragraphs.forEach((paragraph) => {
+        if (!paragraph.trim()) {
+          // 段落間に空行を挿入
+          allLines.push(['']);
+          return;
+        }
+
+        // BudouXで文節に分割
+        const chunks = parser.parse(paragraph);
+
+        // 文節間で改行を挿入
+        const lines: string[] = [];
+        let currentLine = '';
+        // const minLineWidth = 20; // 最小行文字数
+        const maxLineWidth = 30; // 最大行文字数
+
+        chunks.forEach((chunk) => {
+          if (currentLine.length + chunk.length > maxLineWidth && currentLine !== '') {
+            lines.push(currentLine);
+            currentLine = chunk;
+          } else {
+            currentLine += chunk;
+          }
+        });
+
+        if (currentLine !== '') {
+          lines.push(currentLine);
+        }
+
+        allLines.push(lines);
       });
-      const data = await response.json();
-      // console.log("data(バッグエンドからもらった): ", data);
-      setLines(data.lines);
+
+      setLines(allLines);
       setLoading(false);
     };
 
-    fetchParsedText();
+    parseText();
   }, [text]);
 
   useEffect(() => {
@@ -42,8 +75,10 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
           gsap.set(paragraph.children, { opacity: 0, y: 20 });
 
           // 段落ごとのアニメーション（表示 → インデント）
-          gsap.timeline({ delay: paraIndex * 0.3 })
-            .to(paragraph.children, {   // 表示
+          gsap
+            .timeline({ delay: paraIndex * 0.3 })
+            .to(paragraph.children, {
+              // 表示
               opacity: 1,
               y: 0,
               duration: 0.5,
@@ -53,7 +88,8 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
                 from: 'start',
               },
             })
-            .to(paragraph.children, {   // インデント
+            .to(paragraph.children, {
+              // インデント
               marginLeft: (index) => index * 20,
               duration: 1,
               ease: 'power3.out',
@@ -67,11 +103,16 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
     <div ref={containerRef} className={styles.layoutedParagraph}>
       {loading ? (
         <div className={styles.loadingWrap}>
-            <Loading />
+          <Loading />
         </div>
       ) : (
         lines.map((paragraphLines, paraIndex) => (
-          <div key={paraIndex} ref={(el) => { paragraphsRef.current[paraIndex] = el; }}>
+          <div
+            key={paraIndex}
+            ref={(el) => {
+              paragraphsRef.current[paraIndex] = el;
+            }}
+          >
             {paragraphLines.length === 1 && paragraphLines[0] === '' ? (
               // 空行の場合は一行分のスペースを追加
               <p className={styles.whiteLine} />
