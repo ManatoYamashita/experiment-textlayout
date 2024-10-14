@@ -1,11 +1,40 @@
 import { siteMetadata } from "./metadataConfig";
 import localFont from "next/font/local";
-import Head from "next/head";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-export const metadata = siteMetadata;
+export const metadata = {
+  ...siteMetadata,
+  script: [
+    {
+      type: "application/ld+json",
+      json: {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "文章自動レイアウトWebApp",
+        "url": "https://text-layout.manapuraza.com",
+        "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
+        "applicationCategory": "Productivity",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript and a modern web browser",
+        "softwareVersion": "1.0.0",
+        "author": {
+          "@type": "Organization",
+          "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
+          "url": "https://text-layout.manapuraza.com",
+          "logo": "https://text-layout.manapuraza.com/logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "03-5707-0104",
+            "contactType": "Customer Support",
+            "availableLanguage": ["English", "Japanese"],
+          },
+        },
+      },
+    },
+  ],
+};
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,39 +59,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              {
-                "@context": "https://schema.org",
-                "@type": "WebApplication",
-                "name": "文章自動レイアウトWebApp",
-                "url": "https://text-layout.manapuraza.com",
-                "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
-                "applicationCategory": "Productivity",
-                "operatingSystem": "All",
-                "browserRequirements": "Requires JavaScript and a modern web browser",
-                "softwareVersion": "1.0.0",
-                "author": {
-                  "@type": "Organization",
-                  "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
-                  "url": "https://text-layout.manapuraza.com",
-                  "logo": "https://text-layout.manapuraza.com/logo.png",
-                  "contactPoint": {
-                    "@type": "ContactPoint",
-                    "telephone": "03-5707-0104",
-                    "contactType": "Customer Support",
-                    "availableLanguage": ["English", "Japanese"]
-                  }
-                },
-              }
-              
-            ),
-          }}
-        />
-      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${HiraginoKakuGothic.variable}`}>
         <main className="main">
           <Header />

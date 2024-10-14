@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             width={100}
             priority
         />
-        <h1>
+        <h1 className={styles.subtitle}>
           文章自動レイアウトWebApp
         </h1>
       </Link>

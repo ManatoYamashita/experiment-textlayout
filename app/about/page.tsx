@@ -51,6 +51,7 @@ export default function AboutPage() {
       <h1 className="text-3xl font-bold mb-6 text-center animate-text">
         文章自動レイアウトWebApp
       </h1>
+      <h2 className="text-2xl font-bold mb-6 text-center animate-text">仕様について - Readme</h2>
       <div className="mb-6 overflow-y-hidden">
         <Image
           src={HeroImg}
