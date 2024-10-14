@@ -1,10 +1,12 @@
 import { siteMetadata } from "./metadataConfig";
 import localFont from "next/font/local";
 import "./globals.css";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import dynamic from 'next/dynamic';
 
 export const metadata = siteMetadata;
+
+const Header = dynamic(() => import('./components/Header'), { ssr: false });
+const Footer = dynamic(() => import('./components/Footer'), { ssr: false });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
