@@ -38,7 +38,8 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
           >
             <Image
               aria-hidden
-              src="https://nextjs.org/icons/window.svg"
+              // src="https://nextjs.org/icons/window.svg"
+              src="https://nextjs.org/icons/globe.svg"
               alt="Window icon"
               width={16}
               height={16}
@@ -49,13 +50,14 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
             href={c3url}
             target="_blank"
             rel="noopener noreferrer"
+            className={styles.docs}
           >
             <Image
               aria-hidden
-              src="https://nextjs.org/icons/globe.svg"
+              src="/icon.ico"
               alt="Globe icon"
-              width={16}
-              height={16}
+              width={18}
+              height={20}
             />
               {credit3}
           </Link>

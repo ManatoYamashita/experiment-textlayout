@@ -21,7 +21,7 @@ const Header: React.FC = () => {
       </Link>
       <nav className={styles.nav}>
         <Link href="/about" className={styles.link}>
-            Docs<span className={styles.alow}>→</span>
+            ReadMe<span className={styles.alow}>→</span>
         </Link>
       </nav>
     </header>

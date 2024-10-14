@@ -76,7 +76,7 @@ export default function RootLayout({
             credit4="©︎2024 東京都市大学メディア情報学部情報システム学科 関研究室 山下マナト"
             c1url="https://www.dnp.co.jp/news/detail/10158391_1587.html"
             c2url="https://github.com/ManatoYamashita/text-layout"
-            c3url="/about"
+            c3url="https://tcu-yamamana.notion.site/text-layout-1122e48e415d80bdb354cfe55a1b5c52?pvs=4"
             c4url="https://manapuraza.com"
           />
         </main>

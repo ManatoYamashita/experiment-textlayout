@@ -17,12 +17,16 @@
         display: flex;
         gap: 24px;
         transition: font-size 0.2s;
-    }
-    
-    .links a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .docs {
+            gap: 4px;
+        }
     }
     
     .links img {
@@ -57,6 +61,9 @@
 
             a {
                 gap: 4px;
+            }
+            .docs {
+                gap: 2px;
             }
         }
         .credit {

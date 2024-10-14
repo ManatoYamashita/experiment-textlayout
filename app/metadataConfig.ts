@@ -5,8 +5,8 @@ export const siteMetadata: Metadata = {
     title: "文章自動レイアウトWebApp",
     description: "プレーンテキストをDNPの論文に基づいた方法で再レイアウトするWebAppです。",
     icons: {
-        icon: 'icon.png',
-        apple: 'icon.png',
+        icon: 'icon.ico',
+        apple: 'icon.ico',
     },
     openGraph: {
         title: "文章自動レイアウトWebApp",

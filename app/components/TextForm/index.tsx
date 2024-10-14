@@ -48,13 +48,13 @@ export default function TextLayoutForm() {
     <>
       <form onSubmit={onSubmit} className={styles.formContainer}>
         <label htmlFor="paragraph" className={styles.label}>
-          文章を入力して送信<small>（3500文字~4000文字くらいまで）</small>
+          Input your text here and Press Button!
         </label>
         <Textarea
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type your plain-text here and press Command + Enter(Ctrl + Enter) to submit."
+          placeholder="文章を入力し、Command + Enter(macOS) / Ctrl + Enter(WindowsOS)または送信ボタンで送信！（テキストは3500~4000文字程度です。）"
           id="paragraph"
           rows={6}
           cols={60}
