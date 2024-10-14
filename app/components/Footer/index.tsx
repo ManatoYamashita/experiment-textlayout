@@ -73,9 +73,9 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
           rel="noopener noreferrer"
           aria-label='東京都市大学'
         >
-          <small>
+          <p className={styles.copyr}>
             {credit4}
-          </small>
+          </p>
         </Link>
       </div>
     </footer>

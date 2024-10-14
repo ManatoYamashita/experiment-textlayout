@@ -46,12 +46,12 @@ export default function RootLayout({
               "applicationCategory": "Productivity",
               "operatingSystem": "All",
               "browserRequirements": "Requires JavaScript and a modern web browser",
-              "softwareVersion": "1.0.0",
+              "softwareVersion": "1.0.1",
               "author": {
                 "@type": "Organization",
                 "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
                 "url": "https://text-layout.manapuraza.com",
-                "logo": "https://text-layout.manapuraza.com/logo.png",
+                "logo": "https://text-layout.manapuraza.com/logo.webp",
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "03-5707-0104",

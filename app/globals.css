@@ -34,7 +34,7 @@ header {
 
 main.main {
   height: 100%;
-  padding: 30svh 80px;
+  padding: 22svh 80px 30svh 80px;
   font-family: var(--font-geist-sans);
   transition: padding 0.2s;
 }
@@ -128,7 +128,7 @@ footer {
     padding: 1rem;
   }
   main.main {
-    padding: 30svh 1.5rem;
+    padding: 23svh 1.5rem 30svh 1.5rem;
   }
 }
 
