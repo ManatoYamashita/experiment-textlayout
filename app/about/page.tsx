@@ -59,6 +59,7 @@ export default function AboutPage() {
           width={640}
           height={360}
           className="rounded-lg w-full h-auto object-cover animate-slide"
+          priority
         />
       </div>
 

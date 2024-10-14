@@ -4,42 +4,13 @@ import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-export const metadata = {
-  ...siteMetadata,
-  script: [
-    {
-      type: "application/ld+json",
-      json: {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "文章自動レイアウトWebApp",
-        "url": "https://text-layout.manapuraza.com",
-        "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
-        "applicationCategory": "Productivity",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript and a modern web browser",
-        "softwareVersion": "1.0.0",
-        "author": {
-          "@type": "Organization",
-          "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
-          "url": "https://text-layout.manapuraza.com",
-          "logo": "https://text-layout.manapuraza.com/logo.png",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "03-5707-0104",
-            "contactType": "Customer Support",
-            "availableLanguage": ["English", "Japanese"],
-          },
-        },
-      },
-    },
-  ],
-};
+export const metadata = siteMetadata;
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -50,6 +21,7 @@ const HiraginoKakuGothic = localFont({
   src: "./fonts/hiragino-kaku-gothic-w3.woff",
   variable: "--font-hiragino-kaku-gothic-w3",
   weight: "300",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -59,12 +31,42 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${HiraginoKakuGothic.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "文章自動レイアウトWebApp",
+              "url": "https://text-layout.manapuraza.com",
+              "description": "プレーンテキストをDNPの研究に基づき再レイアウトするプログラムです。",
+              "applicationCategory": "Productivity",
+              "operatingSystem": "All",
+              "browserRequirements": "Requires JavaScript and a modern web browser",
+              "softwareVersion": "1.0.0",
+              "author": {
+                "@type": "Organization",
+                "name": "東京都市大学 メディア情報学部|デザインデータ科学部 関研究室",
+                "url": "https://text-layout.manapuraza.com",
+                "logo": "https://text-layout.manapuraza.com/logo.png",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "telephone": "03-5707-0104",
+                  "contactType": "Customer Support",
+                  "availableLanguage": ["English", "Japanese"],
+                },
+              },
+            }),
+          }}
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${HiraginoKakuGothic.variable}`}
+      >
         <main className="main">
           <Header />
-          <div className="pageContainer">
-            {children}
-          </div>
+          <div className="pageContainer">{children}</div>
           <Footer
             credit1="先行研究(DNP, 2020)"
             credit2="Github"
