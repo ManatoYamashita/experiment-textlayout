@@ -21,6 +21,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
             href={c1url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label='先行研究'
           >
             <Image
               aria-hidden
@@ -35,6 +36,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
             href={c2url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label='Github'
           >
             <Image
               aria-hidden
@@ -51,6 +53,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
             target="_blank"
             rel="noopener noreferrer"
             className={styles.docs}
+            aria-label='卒業研究のメモ（Notion Site）'
           >
             <Image
               aria-hidden
