@@ -14,11 +14,11 @@ const geistSans = localFont({
   weight: "100 900",
   display: "swap",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 const HiraginoKakuGothic = localFont({
   src: "./fonts/hiragino-kaku-gothic-w3.woff",
   variable: "--font-hiragino-kaku-gothic-w3",
@@ -64,7 +64,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${HiraginoKakuGothic.variable}`}
+        className={`${geistSans.variable} ${HiraginoKakuGothic.variable}`}
       >
         <main className="main">
           <Header />

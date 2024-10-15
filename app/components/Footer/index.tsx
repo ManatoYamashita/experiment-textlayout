@@ -60,7 +60,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
               src="/icon.ico"
               alt="Globe icon"
               width={18}
-              height={20}
+              height={18}
             />
               {credit3}
           </Link>

@@ -3,8 +3,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from './index.module.scss';
-import Loading from '@/components/Loading';
+import dynamic from 'next/dynamic';
 import { loadDefaultJapaneseParser } from 'budoux';
+
+const Loading = dynamic(() => import('@/components/Loading'), { ssr: false });
 
 interface TextLayoutProps {
   text: string;

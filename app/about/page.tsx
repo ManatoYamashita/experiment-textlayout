@@ -50,8 +50,8 @@ export default function AboutPage() {
     >
       <h1 className="text-3xl font-bold mb-6 text-center animate-text">
         文章自動レイアウトWebApp
+        <p className={styles.subtitle}>仕様について - ReadMe</p>
       </h1>
-      <h2 className="text-2xl font-bold mb-6 text-center animate-text">仕様について - Readme</h2>
       <div className="mb-6 overflow-y-hidden">
         <Image
           src={HeroImg}
@@ -142,38 +142,58 @@ export default function AboutPage() {
         <ul className={`${styles.unorderList} animate-text`}>
           <li className={styles.list}>
             <Link href="https://nextjs.org" aria-label="Next.js" className={styles.anchorLink}>
-              <strong>Next.js ver14(Approuter) with TypeScript(JavaScript)</strong>: ブラウザ上で動的にテキストをレイアウトします。
+              <strong>Next.js(Approuter) with TypeScript(JavaScript)</strong>
             </Link>
+            : Node.js上に構築されたオープンソースのWebアプリケーションフレームワーク。Typescriptで記述されています。
           </li>
           <li className={styles.list}>
+          <del className={styles.del}>
             <Link href="https://github.com/takuyaa/kuromoji.js/" aria-label="Kuromoji" className={styles.anchorLink}>
-              <strong>Kuromoji(形態素解析)</strong>: 日本語テキストを文節に分解します。
+              <strong>Kuromoji(形態素解析)</strong>
             </Link>
+            : 日本語テキストの形態素解析を行うサードパーティのライブラリです。
+            </del>
+          </li>
+        </ul>
+        <div>
+          <small>Kuromojiを用いてバッグエンドの処理で形態素解析を行い、文節間改行を行おうとしていましたが、煩雑だったため、現在はBudouXによるフロントエンドのみでの処理に改善しました。</small>
+        </div>
+        <ul className={`${styles.unorderList} animate-text`}>
+          <li className={styles.list}>
+            <Link href="https://developers-jp.googleblog.com/2023/09/budoux-adobe.html" aria-label="BudouX - Google Developers" className={styles.anchorLink}>
+              <strong>BudouX(機械学習モデル)</strong>
+            </Link>
+            : サードパーティのAPIや分かち書きライブラリに依存せずに動作する、20KB程度で計量な機械学習モデルです。文節間改行のために使用します。
           </li>
           <li className={styles.list}>
             <Link href="https://sass-lang.com" aria-label="Sass" className={styles.anchorLink}>
-              <strong>SASS(SCSS)</strong>: 柔軟なテキストのフォーマットとレスポンシブデザインを実現します。
+              <strong>SASS(SCSS)</strong>
             </Link>
+            : アプリケーション全体のデザインを提供。さらに一部の単純なアニメーションとレスポンシブデザインを実現しています。
           </li>
           <li className={styles.list}>
             <Link href="https://ui.shadcn.com/" aria-label="shadcn/ui" className={styles.anchorLink}>
-              <strong>Shadcn/ui(Radix, tailWindCSS)</strong>: ユーザーインターフェースの構築に使用します。
+              <strong>Shadcn/ui(Radix, tailWindCSS)</strong>
             </Link>
+            : 一貫したデザインのユーザーインターフェースの構築に使用します。
           </li>
           <li className={styles.list}>
             <Link href="https://eslint.org/" aria-label="ESLint" className={styles.anchorLink}>
-              <strong>ESLint & Prettier</strong>: コードの品質を保つために使用します。
+              <strong>ESLint & Prettier</strong>
             </Link>
+            : コードの品質を保つために使用しています。
           </li>
           <li className={styles.list}>
             <Link href="https://gsap.com" aria-label="Green Sock Animation Library" className={styles.anchorLink}>
-              <strong>GSAP</strong>: テキストアニメーションの導入
+              <strong>GSAP</strong>
             </Link>
+            : フォームの初期表示や、テキストのレイアウト時などの高度なアニメーションを実装するために使用しています。
           </li>
           <li className={styles.list}>
             <Link href="https://vercel.com" aria-label="Vercel" className={styles.anchorLink}>
-              <strong>Vercel</strong>: 高速な配信とホスティング
+              <strong>Vercel</strong>
             </Link>
+            : 高速な配信とホスティング
           </li>
         </ul>
 
@@ -182,21 +202,21 @@ export default function AboutPage() {
           ローカルでアプリを実行するには以下のコマンドを順番に実行してください。（
           <Link
             className={styles.anchorLink}
-            href="https://www.npmjs.com"
-            aria-label="npmの公式サイト"
+            href="https://nodejs.org/"
+            aria-label="node.js公式サイト"
           >
-            npm
+            node.js
           </Link>
-          のインストールが必要です。）：
+          の環境が必要です。）：
         </p>
 
         <pre className={`${styles.pre} animate-text overflow-y-hidden`}>
           <code className={styles.code}>
-            git clone https://github.com/your-repo/text-layout-app.git
+            git clone https://github.com/ManatoYamashita/text-layout.git
           </code>
         </pre>
         <pre className={`${styles.pre} animate-text overflow-y-hidden`}>
-          <code className={styles.code}>cd text-layout-app</code>
+          <code className={styles.code}>cd text-layout</code>
         </pre>
         <pre className={`${styles.pre} animate-text overflow-y-hidden`}>
           <code className={styles.code}>npm install</code>

@@ -54,7 +54,7 @@ export default function TextLayoutForm() {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="3500~4000文字程度のテキストを入力"
+          placeholder="1750文字程度までのテキストを入力"
           id="paragraph"
           rows={6}
           cols={60}
