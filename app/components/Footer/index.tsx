@@ -57,7 +57,7 @@ function Footer( {credit1, credit2, credit3, credit4, c1url, c2url, c3url, c4url
           >
             <Image
               aria-hidden
-              src="/icon.ico"
+              src="/favicon.ico"
               alt="Globe icon"
               width={18}
               height={18}

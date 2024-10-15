@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Image from 'next/image';
-import logo from '../../../public/images/sekilab-logo.webp';
+import logoImage from '../../../public/images/sekilab-logo.webp';
 
 const Header: React.FC = () => {
   return (
@@ -10,10 +10,13 @@ const Header: React.FC = () => {
       {/* <Link href="https://www.comm.tcu.ac.jp/seki-ken" className={styles.logo} aria-label='東京都市大学 関研究室 情報セキュリティ'> */}
       <Link href="/" className={styles.logo} aria-label='東京都市大学 関研究室 情報セキュリティ'>
         <Image
-            src={logo}
+            src={logoImage}
             alt='Seki Labo'
             width={100}
+            height={42}
             priority
+            draggable={false}
+            loading='eager'
         />
         <h1 className={styles.subtitle}>
           文章自動レイアウトWebApp
