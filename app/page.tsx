@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import TextForm from "./components/TextForm";
+import LayoutButton from "./components/LayoutButton";
 
 export default function Home() {
 
@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <h1 className={styles.title}>✋Hi there!</h1>
-        <TextForm />
+        <LayoutButton text={"Go"} />
       </main>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 import TextLayout from '@/components/TextLayout';
 import styles from './page.module.scss';
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Buttons from '@/components/Buttons';
 
 interface LayoutPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -22,13 +22,11 @@ export default function LayoutPage({ searchParams }: LayoutPageProps) {
 
   return (
     <div className={styles.layoutContainer}>
-      <h1 className={styles.title}>✨Looks good?</h1>
+      <h1 className={styles.title}>✨Read text</h1>
       <TextLayout text={text} />
       <div className="text-center">
         <Link href="/" aria-label='もう一度試す（retry）' className={styles.retryBtn}>
-          <Button>
-              もう一度試す (retry)
-          </Button>
+          <Buttons />
         </Link>
       </div>
     </div>
