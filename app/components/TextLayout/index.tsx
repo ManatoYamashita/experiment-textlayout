@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState, useRef } from 'react';
-import { gsap } from 'gsap';
 import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
 import { loadDefaultJapaneseParser } from 'budoux';
@@ -43,7 +42,6 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
         // 文節間で改行を挿入
         const lines: string[] = [];
         let currentLine = '';
-        // const minLineWidth = 20; // 最小行文字数
         const maxLineWidth = 30; // 最大行文字数
 
         chunks.forEach((chunk) => {
@@ -71,33 +69,35 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
 
   useEffect(() => {
     if (paragraphsRef.current.length > 0) {
-      paragraphsRef.current.forEach((paragraph, paraIndex) => {
-        if (paragraph) {
-          // 初期状態で要素を非表示に設定
-          gsap.set(paragraph.children, { opacity: 0, y: 20 });
+      (async () => {
+        const { gsap } = await import('gsap');
 
-          // 段落ごとのアニメーション（表示 → インデント）
-          gsap
-            .timeline({ delay: paraIndex * 0.3 })
-            .to(paragraph.children, {
-              // 表示
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              ease: 'power3.out',
-              stagger: {
-                each: 0.1,
-                from: 'start',
-              },
-            })
-            .to(paragraph.children, {
-              // インデント
-              marginLeft: (index) => index * 20,
-              duration: 1,
-              ease: 'power3.out',
-            });
-        }
-      });
+        paragraphsRef.current.forEach((paragraph, paraIndex) => {
+          if (paragraph) {
+            // 初期状態で要素を非表示に設定
+            gsap.set(paragraph.children, { opacity: 0, y: 20 });
+
+            // アニメーションの設定
+            gsap
+              .timeline({ delay: paraIndex * 0.3 })
+              .to(paragraph.children, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power3.out',
+                stagger: {
+                  each: 0.1,
+                  from: 'start',
+                },
+              })
+              .to(paragraph.children, {
+                marginLeft: (index) => index * 20,
+                duration: 1,
+                ease: 'power3.out',
+              });
+          }
+        });
+      })();
     }
   }, [lines]);
 
@@ -116,7 +116,6 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
             }}
           >
             {paragraphLines.length === 1 && paragraphLines[0] === '' ? (
-              // 空行の場合は一行分のスペースを追加
               <p className={styles.whiteLine} />
             ) : (
               paragraphLines.map((line, lineIndex) => (

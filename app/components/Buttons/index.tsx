@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import styles from './index.module.scss';
 import { Button } from '@/components/ui/button';
 
 export default function Buttons() {
   const [time, setTime] = useState(0);
+  const [hasActionBeenPerformed, setHasActionBeenPerformed] = useState(false);
   const router = useRouter();
+  const pathname = usePathname(); // 現在のパスを取得
 
   const texts = useMemo(
     () => [
@@ -28,15 +30,16 @@ export default function Buttons() {
     return () => clearInterval(interval); // クリーンアップ
   }, []);
 
-  // 時間を送信する関数
-  const handleSubmit = useCallback(async () => {
+  // 時間と選択されたインデックスを送信する関数
+  const handleSubmit = useCallback(async (time: number, selectedIndex: number) => {
     try {
-      const response = await fetch('/api/submitTime', {
+      console.log(`Sending data: time=${time}, selectedIndex=${selectedIndex}`);
+      const response = await fetch('/api/submitTime', { // 既存のAPIエンドポイントを使用
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ time })
+        body: JSON.stringify({ time, selectedIndex })
       });
 
       if (response.ok) {
@@ -48,32 +51,37 @@ export default function Buttons() {
     } catch (error) {
       console.error('エラーが発生しました:', error);
     }
-  }, [time]);
+  }, []);
 
   // ページ遷移の関数
-  const handleNavigation = useCallback(() => {
-    const randomIndex = Math.floor(Math.random() * texts.length);
-    const selectedPhrase = texts[randomIndex];
+  const handleNavigation = useCallback((selectedPhrase: string) => {
     router.push(`/layouted?text=${encodeURIComponent(selectedPhrase)}`);
-  }, [texts, router]);
+  }, [router]);
 
   // 全体の処理をまとめた関数
   const handleAction = useCallback(async () => {
-    // 1. 時間を送信
-    await handleSubmit();
+    if (hasActionBeenPerformed) return; // 二度押し防止
 
-    // 2. タイマーをリセット
-    setTime(-2);
+    setHasActionBeenPerformed(true); // アクションが実行されたことを記録
 
-    // 3. ページ遷移
-    handleNavigation();
-  }, [handleSubmit, handleNavigation]);
+    // 1. ランダムなインデックスを選択
+    const randomIndex = Math.floor(Math.random() * texts.length);
+    const selectedPhrase = texts[randomIndex];
+
+    // 2. 時間と選択されたインデックスを送信
+    await handleSubmit(time, randomIndex);
+
+    // 3. タイマーをリセット
+    setTime(0);
+
+    // 4. ページ遷移
+    handleNavigation(selectedPhrase);
+  }, [hasActionBeenPerformed, handleSubmit, time, texts, handleNavigation]);
 
   // MetaKey + Enter で動作するイベントリスナー
   useEffect(() => {
     const handleKeyDown = async (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === 'Enter') {
-        // 全体の処理を実行
         await handleAction();
       }
     };
@@ -86,6 +94,18 @@ export default function Buttons() {
     };
   }, [handleAction]);
 
+  // パスが変更されたら状態をリセット
+  useEffect(() => {
+    setHasActionBeenPerformed(false);
+  }, [pathname]);
+
+  // timeが0になったらボタンを再度押せるようにする
+  useEffect(() => {
+    if (time === 0) {
+      setHasActionBeenPerformed(false);
+    }
+  }, [time]);
+
   return (
     <div>
       <h1>タイマー: {time} 秒</h1>
@@ -93,6 +113,7 @@ export default function Buttons() {
         type="button"
         onClick={handleAction}
         className={styles.btn}
+        disabled={hasActionBeenPerformed} // ボタンを無効化
       >
         <strong className={styles.strong}>Next</strong>
         <small className={styles.small}>（Command + Enter）</small>
