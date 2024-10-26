@@ -106,7 +106,7 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
         });
       })();
     }
-  }, [lines, randomMargin]); // `randomMargin` を依存配列に追加
+  }, [lines, randomMargin]);
 
   return (
     <div className={styles.layoutContainer}>

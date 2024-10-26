@@ -19,12 +19,15 @@ const Header: React.FC = () => {
             loading='eager'
         />
         <h1 className={styles.subtitle}>
-          文章自動レイアウトWebApp
+          文章自動レイアウトWebApp - <strong>for Experiment</strong>
         </h1>
       </Link>
       <nav className={styles.nav}>
         <Link href="/about" className={styles.link}>
             ReadMe<span className={styles.alow}>→</span>
+        </Link>
+        <Link href="https://text-layout.manapuraza.com" className={styles.link}>
+            β<span className={styles.alow}>→</span>
         </Link>
       </nav>
     </header>

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["json-schema"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,

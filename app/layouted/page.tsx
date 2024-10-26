@@ -1,29 +1,23 @@
-"use client";
-
 import React from 'react';
-import TextLayout from '@/components/TextLayout';
-import styles from './page.module.scss';
+import dynamic from 'next/dynamic';
 
-interface LayoutPageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+interface LayoutedPageProps {
+  searchParams: {
+    text: string;
+    margin?: string;
+  };
 }
 
-export default function LayoutPage({ searchParams }: LayoutPageProps) {
-  const text = searchParams.text;
+const TextLayout = dynamic(() => import('@/components/TextLayout'), { ssr: false });
 
-  if (!text || typeof text !== 'string') {
-    return (
-      <div className={styles.layoutContainer}>
-        <h1 className={styles.title}>☕️エラー: テキストを入力してください。</h1>
-        <div className={styles.error}>No text provided.</div>
-      </div>
-    );
-  }
+const LayoutedPage: React.FC<LayoutedPageProps> = ({ searchParams }) => {
+  const text = searchParams.text || "エラーが発生しました。";
 
   return (
-    <div className={styles.layoutContainer}>
-      <h1 className={styles.title}>✨Read text</h1>
+    <div>
       <TextLayout text={text} />
     </div>
   );
-}
+};
+
+export default LayoutedPage;

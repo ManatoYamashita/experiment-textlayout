@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
@@ -36,7 +36,7 @@ export default function StartButton({ btnText }: StartButtonProps) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [handleAction]); // useEffectにhandleActionを依存させる
+  }, [handleAction]);
 
   return (
     <Button
