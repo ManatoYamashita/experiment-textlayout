@@ -4,6 +4,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from './index.module.scss';
 import dynamic from 'next/dynamic';
 import { loadDefaultJapaneseParser } from 'budoux';
+import { useSearchParams } from 'next/navigation';
+import TimerAndAPIPostButton from '@/components/TimerAndAPIPostButton';
 
 const Loading = dynamic(() => import('@/components/Loading'), { ssr: false });
 
@@ -16,6 +18,11 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
   const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const paragraphsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const searchParams = useSearchParams(); // クエリパラメータを取得
+
+  // クエリパラメータから margin を取得
+  const marginParam = searchParams.get('margin');
+  const randomMargin = marginParam ? parseFloat(marginParam) : 0;
 
   useEffect(() => {
     const parseText = async () => {
@@ -91,7 +98,7 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
                 },
               })
               .to(paragraph.children, {
-                marginLeft: (index) => index * 20,
+                marginLeft: (index: number) => index * randomMargin, // `randomMargin` を適用
                 duration: 1,
                 ease: 'power3.out',
               });
@@ -99,35 +106,40 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
         });
       })();
     }
-  }, [lines]);
+  }, [lines, randomMargin]); // `randomMargin` を依存配列に追加
 
   return (
-    <div ref={containerRef} className={styles.layoutedParagraph}>
-      {loading ? (
-        <div className={styles.loadingWrap}>
-          <Loading />
-        </div>
-      ) : (
-        lines.map((paragraphLines, paraIndex) => (
-          <div
-            key={paraIndex}
-            ref={(el) => {
-              paragraphsRef.current[paraIndex] = el;
-            }}
-          >
-            {paragraphLines.length === 1 && paragraphLines[0] === '' ? (
-              <p className={styles.whiteLine} />
-            ) : (
-              paragraphLines.map((line, lineIndex) => (
-                <p key={lineIndex} className={styles.line}>
-                  {line}
-                </p>
-              ))
-            )}
-            <br />
+    <div className={styles.layoutContainer}>
+      <div ref={containerRef} className={styles.layoutedParagraph}>
+        {loading ? (
+          <div className={styles.loadingWrap}>
+            <Loading />
           </div>
-        ))
-      )}
+        ) : (
+          lines.map((paragraphLines, paraIndex) => (
+            <div
+              key={paraIndex}
+              ref={(el) => {
+                paragraphsRef.current[paraIndex] = el;
+              }}
+            >
+              {paragraphLines.length === 1 && paragraphLines[0] === '' ? (
+                <p className={styles.whiteLine} />
+              ) : (
+                paragraphLines.map((line, lineIndex) => (
+                  <p key={lineIndex} className={styles.line}>
+                    {line}
+                  </p>
+                ))
+              )}
+              <br />
+            </div>
+          ))
+        )}
+      </div>
+      <div className="text-center">
+        <TimerAndAPIPostButton currentText={text} currentMargin={randomMargin} />
+      </div>
     </div>
   );
 };

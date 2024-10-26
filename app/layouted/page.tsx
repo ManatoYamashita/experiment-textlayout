@@ -1,11 +1,8 @@
-// app/layouted/page.tsx
-
 "use client";
 
 import React from 'react';
 import TextLayout from '@/components/TextLayout';
 import styles from './page.module.scss';
-import Buttons from '@/components/Buttons';
 
 interface LayoutPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -27,9 +24,6 @@ export default function LayoutPage({ searchParams }: LayoutPageProps) {
     <div className={styles.layoutContainer}>
       <h1 className={styles.title}>✨Read text</h1>
       <TextLayout text={text} />
-      <div className="text-center">
-        <Buttons />
-      </div>
     </div>
   );
 }
