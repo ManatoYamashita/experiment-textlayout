@@ -1,38 +1,34 @@
-.formContainer {
-    will-change: visibility;
-    overflow: hidden;
-    visibility: hidden;
+.btn {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
     transition: all .2s;
-    padding: .5rem;
+    will-change: width, opacity;
+    opacity: 0;
+    width: 0;
+    animation: OpenIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation-delay: 1s;
+}
+    
+.btnInverted {
+    background-color: whitesmoke;
+    border: 1px solid black;
+}
 
-    .label {
-        font-size: 15px;
-        color: #333;
-        cursor: pointer;
+.btnInverted > .strong,
+.btnInverted > .small {
+    color: black;
+    font-weight: normal;
+}
+
+@keyframes OpenIn {
+    0% {
+        opacity: 0;
+        width: 0;
     }
-    
-    .textarea {
-        font-size: 16px;
-        padding: 10px;
+    100% {
+        opacity: 1;
         width: 100%;
-        box-sizing: border-box;
-    }
-    .btn {
-        padding: 10px 20px;
-        margin-top: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all .2s;
-    }
-      
-    .btnInverted {
-        background-color: whitesmoke;
-        border: 1px solid black;
-    }
-    
-    .btnInverted > .strong,
-    .btnInverted > .small {
-        color: black;
-        font-weight: normal;
     }
 }

@@ -56,6 +56,14 @@ h1.title {
   animation: FadeDown 3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   animation-delay: 2s;
 }
+.para {
+  opacity: 0;
+  transform: translateY(50px);
+  font-size: 1rem;
+  line-height: 1.5;
+  animation: FadeDown 3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: 1s;
+}
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {

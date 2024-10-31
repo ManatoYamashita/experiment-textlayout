@@ -68,11 +68,11 @@ export default function RootLayout({
           <div className="pageContainer">{children}</div>
           <Footer
             credit1="先行研究(DNP, 2020)"
-            credit2="Github"
+            credit2="data(g-sheet)"
             credit3="Docs →"
             credit4="©︎2024 東京都市大学メディア情報学部情報システム学科 関研究室 山下マナト"
             c1url="https://www.dnp.co.jp/news/detail/10158391_1587.html"
-            c2url="https://github.com/ManatoYamashita/text-layout"
+            c2url="https://docs.google.com/spreadsheets/d/1qYiHCGLyWoyAU2pe5ZA9oewVdj-U0ZoEsDn4647KDGs/edit?usp=sharing"
             c3url="https://tcu-yamamana.notion.site/text-layout-1122e48e415d80bdb354cfe55a1b5c52?pvs=4"
             c4url="https://manapuraza.com"
           />
