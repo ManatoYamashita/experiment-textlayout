@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './index.module.scss';
 import { Button } from '@/components/ui/button';
-import texts from '@/data/texts';
+import { texts } from '@/data/texts';
 
 interface StartButtonProps {
   btnText: string;
