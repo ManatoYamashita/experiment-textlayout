@@ -1,6 +1,7 @@
 export interface TextData {
     texts: string[];
     randomMargins: number[];
+    devicePpi: number;
 }
 
 export const texts: string[] = [
@@ -208,4 +209,9 @@ export const texts: string[] = [
 `,
 ];  // 星新一『ボッコちゃん』から
 
-export const randomMargins: number[] = [8, 11, 17, 25, 33]; // テキストを16.63pxとすると、それぞれ[1/2, 3/4, 1, 1.5, 2]行分のマージンになる
+// マージンを決定するための定数
+export const randomMargins: number[] = [0.5, 0.75, 1, 1.5, 2]; // 1/2, 2/3, 1, 3/2, 2
+
+// フォントサイズを決定するための定数(デバイスのPPI)
+export const devicePpi: number = 227; // macbook Air 13 inch 2020
+// export const devicePpi: number = 264; // iPad（先行研究）

@@ -11,9 +11,10 @@ const Loading = dynamic(() => import('@/components/Loading'), { ssr: false });
 
 interface TextLayoutProps {
   text: string;
+  devicePpi: number;
 }
 
-const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
+const TextLayout: React.FC<TextLayoutProps> = ({ text, devicePpi }) => {
   const [parsedParagraphs, setParsedParagraphs] = useState<(string[] | 'LINE_BREAK')[]>([]);
   const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,6 +24,9 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
   // クエリパラメータから margin を取得
   const marginParam = searchParams.get('margin');
   const randomMargin = marginParam ? parseFloat(marginParam) : 0;
+
+  // 端末(ppi)の4.4mmあたりのピクセル数、つまり、1文字の大きさを計算
+  const mmToPx = (4.4 / 25.4) * devicePpi; // 4.4 mm のピクセル換算
 
   useEffect(() => {
     const parseText = async () => {
@@ -103,7 +107,7 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text }) => {
                 },
               })
               .to(paragraph.children, {
-                marginLeft: (index: number) => index * randomMargin, // `randomMargin` を適用
+                marginLeft: (index: number) => index * (randomMargin * mmToPx), // `randomMargin` を適用
                 duration: 1,
                 ease: 'power3.out',
               });

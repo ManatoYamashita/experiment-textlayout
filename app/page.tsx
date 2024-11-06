@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import StartButton from "./components/StartButton";
 
 export default function Home() {

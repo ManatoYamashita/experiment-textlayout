@@ -1,10 +1,12 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import { devicePpi } from '@/data/texts';
 
 interface LayoutedPageProps {
   searchParams: {
     text: string;
     margin?: string;
+    devicePpi?: number;
   };
 }
 
@@ -15,7 +17,7 @@ const LayoutedPage: React.FC<LayoutedPageProps> = ({ searchParams }) => {
 
   return (
     <div>
-      <TextLayout text={text} />
+      <TextLayout text={text} devicePpi={devicePpi} />
     </div>
   );
 };

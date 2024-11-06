@@ -8,8 +8,10 @@ $da-text: #1A1A1A;    // デジタル庁 デザインシステムの定める文
 $shadcn-slate-primary: 224 71.4% 4.1%; // shadcn-ui(正確にはTailwindCSS)の定める黒ボタンの背景色などで使用(#030712)
 
 // Font Size
-// $font-size: 16.63px;
-$font-size: 39.3px; // MacBokAir 13inch(227ppi)でのフォントサイズ(4.4mm)
+$font-size: 4.4mm; // フォントサイズ
+// $font-size: 45.7px; // iPad(264ppi)でのフォントサイズ(4.4mm): 先行研究の環境
+// $font-size: 39.3px; // MacBokAir 13inch(227ppi)でのフォントサイズ(4.4mm): 当環境
+// $font-size: 16.63px; // iPhone 6/7/8(326ppi)でのフォントサイズ(4.4mm): 先行研究の環境
 
 $font-family: var(--font-hiragino-kaku-gothic-w3); // 先行研究で使用されたフォント ヒラギノ角ゴシックPro W3
 $line-height: 1.6;  // 行間

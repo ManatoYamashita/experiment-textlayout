@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -57,10 +59,10 @@ h1.title {
   animation-delay: 2s;
 }
 .para {
+  font-size: $font-size;
+  line-height: $line-height;
   opacity: 0;
   transform: translateY(50px);
-  font-size: 1rem;
-  line-height: 1.5;
   animation: FadeDown 3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   animation-delay: 1s;
 }
@@ -92,13 +94,6 @@ h1.title {
     min-width: auto;
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
-
 @keyframes FadeDown {
   from {
     opacity: 0;
