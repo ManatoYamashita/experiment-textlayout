@@ -210,7 +210,7 @@ export const texts: string[] = [
 ];  // 星新一『ボッコちゃん』から
 
 // マージンを決定するための定数
-export const randomMargins: number[] = [0.5, 0.75, 1, 1.5, 2]; // 1/2, 2/3, 1, 3/2, 2
+export const randomMargins: number[] = [0.5, 0.75, 1, 1.5, 2]; // 改行ごとに文字幅の1/2, 2/3, 1, 3/2, 2倍のインデントを設定
 
 // フォントサイズを決定するための定数(デバイスのPPI)
 export const devicePpi: number = 227; // macbook Air 13 inch 2020

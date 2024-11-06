@@ -115,7 +115,7 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text, devicePpi }) => {
         });
       })();
     }
-  }, [parsedParagraphs, randomMargin]);
+  }, [parsedParagraphs, randomMargin, mmToPx]);
 
   return (
     <div className={styles.layoutContainer}>
