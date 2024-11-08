@@ -23,9 +23,6 @@ const Header: React.FC = () => {
         </h1>
       </Link>
       <nav className={styles.nav}>
-        <Link href="/about" className={styles.link}>
-            ReadMe<span className={styles.alow}>→</span>
-        </Link>
         <Link href="https://text-layout.manapuraza.com" className={styles.link}>
             Stable<span className={styles.alow}>→</span>
         </Link>

@@ -119,9 +119,6 @@
     /
     ├── README.md
     ├── app（Next.jsのAppRouterを使用）
-    │   ├── about
-    │   │   ├── page.module.scss
-    │   │   └── page.tsx（aboutページ）
     │   ├── api
     │   │   └── submitToGoogleSpreadSheet
     │   │       └── route.ts（APIのルート）
