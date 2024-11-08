@@ -112,7 +112,7 @@ export default function TimerAndAPIPostButton({ currentText, currentMargin }: Bu
           className={styles.btn}
           disabled={hasActionBeenPerformed}
         >
-          <strong className={styles.strong}>Next</strong>
+          <strong className={styles.strong}>Next \u003E</strong>
           <small className={styles.small}>（Command + Enter）: ({time})</small>
         </Button>
       )}
