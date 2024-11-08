@@ -4,7 +4,7 @@
     // [shadcn-ui-color]  https://ui.shadcn.com/colors
     // [shadcn-ui Design] System https://www.figma.com/community/file/1203061493325953101
 
-$da-text: #1A1A1A;    // デジタル庁 デザインシステムの定める文字色の黒
+$da-text: hsl(0, 0%, 10%);    // デジタル庁 デザインシステムの定める文字色の黒
 $shadcn-slate-primary: 224 71.4% 4.1%; // shadcn-ui(正確にはTailwindCSS)の定める黒ボタンの背景色などで使用(#030712)
 
 // Font Size

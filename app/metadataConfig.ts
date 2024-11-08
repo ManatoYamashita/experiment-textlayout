@@ -1,24 +1,28 @@
 import { Metadata } from 'next';
 
+const url: string = "https://text-layout-beta.vercel.app";
+const title: string = "文章自動レイアウトWebApp-beta（実験用）";
+const description: string = "DNPの研究に基づき日本語のテキストレイアウトを最適化するためのWebアプリケーションであり、被験者実験を通じて読みやすさを向上させることを目的としています。先行研究に基づき、動的なテキストレイアウトとインデント設定を使用して、視線の移動を減少させ、読み速度を向上させることを目指しています。";
+
 export const siteMetadata: Metadata = {
-    metadataBase: new URL('https://text-layout.manapuraza.com'),
-    title: "文章自動レイアウトWebApp",
-    description: "日本語または英語のテキストをDNP（大日本印刷）の論文に基づいた方法で再レイアウトするWebAppです。ブラウザ上で動作するウェブアプリです。東京都市大学の関研究室での卒業研究のために開発",
+    metadataBase: new URL(url),
+    title: title,
+    description: description,
     icons: {
         icon: 'favicon.ico',
         apple: 'favicon.ico',
     },
     openGraph: {
-        title: "文章自動レイアウトWebApp",
-        description: "日本語または英語のテキストをDNP（大日本印刷）の論文に基づいた方法で再レイアウトするWebAppです。ブラウザ上で動作するウェブアプリです。東京都市大学の関研究室での卒業研究のために開発",
-        url: "https://text-layout.manapuraza.com",
-        siteName: '関研究室 - 山下マナト',
+        title: title,
+        description: description,
+        url: url,
+        siteName: '東京都市大学 関研究室 - 山下マナト',
         images: [
         {
             url: '/images/ogp.png',
             width: 1200,
             height: 630,
-            alt: '文章自動レイアウトWebApp',
+            alt: title,
         },
         ],
         locale: 'ja_JP',
@@ -26,15 +30,15 @@ export const siteMetadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: '文章自動レイアウトWebApp',
-        description: "日本語または英語のテキストをDNP（大日本印刷）の論文に基づいた方法で再レイアウトするWebAppです。ブラウザ上で動作するウェブアプリです。東京都市大学の関研究室での卒業研究のために開発",
+        title: title,
+        description: description,
         site: '@manapuraza',
         images: [
         {
             url: '/images/ogp.png',
             width: 1200,
             height: 630,
-            alt: '文章自動レイアウトWebApp',
+            alt: title,
         },
         ],
     }
