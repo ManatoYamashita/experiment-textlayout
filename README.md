@@ -1,5 +1,11 @@
 # 文章自動レイアウトWebApp - Beta（実験用）
 
+![textlayout-beta](https://github.com/user-attachments/assets/81ff99a5-16ab-463a-a546-722c06392155)
+
+* [Google Spread Sheetはこちら](https://docs.google.com/spreadsheets/d/1qYiHCGLyWoyAU2pe5ZA9oewVdj-U0ZoEsDn4647KDGs/edit?usp=sharing)
+* [WebApp](https://textlayout-beta.vercel.app)
+* [卒業研究memo](https://tcu-yamamana.notion.site/text-layout-Docs-1122e48e415d80bdb354cfe55a1b5c52?pvs=4)
+
 ## 概要
 
 このプロジェクトは、電子書籍リーダー向けに日本語のテキストレイアウトを最適化する研究に基づいています。論文によれば、自然な言語単位である「文節」を基準にした改行やテキスト配置を調整することで、視線の無駄な移動を減らし、読み速度を向上させることができます。
@@ -8,7 +14,7 @@
 本研究では、これらの限界を踏まえ、適切なインデント量を明らかにするための被験者実験を行い、DNPの研究の補完を目指します。
 このWebAppは、その被験者実験用のために開発されたものをBetaと呼んでいます。
 
-本プロジェクトにおける主な参考文献：
+### 本プロジェクトにおける主な参考文献：
 
 - 小林潤平，関口隆，新堀英二，川嶋稔夫，“文節間改行レイアウトを有する日本語リーダーの読み効率評価”，人工知能学会論文誌，vol.30，no.2，pp.479‒484，2015.
 - 小林潤平，関口隆，新堀英二，川嶋稔夫，“日本語リーダーにおける読み速度と眼球運動の行長依存性に基づく最適行長の検討”，電子情報通信学会論文誌.D，vol.J99‒D，no.1，pp.23‒34，2016.
@@ -29,7 +35,7 @@
 
 - **Next.js(Approuter) with TypeScript(JavaScript)**: Node.js上に構築されたオープンソースのWebアプリケーションフレームワーク。Typescriptで記述されています。
 - **BudouX(機械学習モデル)**: サードパーティのAPIや分かち書きライブラリに依存せずに動作する、20KB程度で計量な機械学習モデルです。文節間改行のために使用します。
-   -- 当初は**Kuromoji.js**ライブラリで形態素解析を行なっていたが、煩雑だったため軽量なBudouXに変更
+   - 当初は**Kuromoji.js**ライブラリで形態素解析を行なっていたが、煩雑だったためGoogle開発による軽量**BudouX**に変更
 - **Google APIs**: Googleスプレッドシートにフォームデータを送信するために使用しています。日時、表示されている文章の種類、適用されたインデント量、読了時間を計測し、Googleスプレッドシートに記録します。
 - **SASS(SCSS)**: アプリケーション全体のデザインを提供。さらに一部の単純なアニメーションとレスポンシブデザインを実現しています。
 - **shadcn/ui(Radix, tailWindCSS)**: 一貫したデザインのユーザーインターフェースとデザインシステムの構築に使用します。
@@ -76,38 +82,38 @@
 
 インデントテキスト量は、以下のようにランダムに選択されます。いずれの設定は、`/data/texts.ts` に登録されています。
 
-- インデント量
+### インデント量
 
-    -- 改行ごとに文字幅の[1/2, 2/3, 1.0, 1.5, 2.0]倍率の6段階のインデント量がランダムに適用されます。これはテキストを39.3pxとしたときの、それぞれ[1/2, 3/4, 1, 1.5, 2, 3]行分のマージンです。
+- 改行ごとに文字幅の`[1/2, 2/3, 1.0, 1.5, 2.0]`倍率の6段階のインデント量がランダムに適用されます。これはテキストを39.3pxとしたときの、それぞれ`[1/2, 3/4, 1, 1.5, 2, 3]`行分のマージンです。
 
-    -- インデント量の計算式は, `index * (randomMargin * mmToPx)` です。ここで、`index` は段落のうちの改行数、`randomMargin` はランダムに選択されたインデント量の倍率(0.5 ~ 2.0)、`mmToPx` は`(4.4 / 25.4) * devicePpi`で表され、これは1文字のフォントサイズを表します。
+- インデント量の計算式は, `index * (randomMargin * mmToPx)` です。ここで、`index` は段落のうちの改行数、`randomMargin` はランダムに選択されたインデント量の倍率(0.5 ~ 2.0)、`mmToPx` は`(4.4 / 25.4) * devicePpi`で表され、これは1文字のフォントサイズを表します。
 
-    -- 先行研究で用いられているiPadを例にすると、画面解像度264ppi, フォントサイズ4.4mmであるため、`mmToPx` は `(4.4 / 25.4) * 264 = 45.7`(px) となります。
+- 先行研究で用いられているiPadを例にすると、画面解像度`264ppi`, フォントサイズ`4.4mm`であるため、`mmToPx` は `(4.4 / 25.4) * 264 = 45.7`(px) となります。
 
-- 文章の種類
+### 使用した文章
 
-    - 星新一のショートショート作品「ボッコちゃん」から以下8作品をランダムに選択しています。
-        - 『狙われた星』
-        - 『盗んだ書類』
-        - 『約束』
-        - 『デラックスな金庫』
-        - 『プレゼント』
-        - 『キツツキ計画』
-        - 『愛用の時計』
-        - 『おみやげ』
+- 星新一のショートショート作品「ボッコちゃん」から以下8作品をランダムに選択しています。
+  - 『狙われた星』
+  - 『盗んだ書類』
+  - 『約束』
+  - 『デラックスな金庫』
+  - 『プレゼント』
+  - 『キツツキ計画』
+  - 『愛用の時計』
+  - 『おみやげ』
 
 ## ディレクトリ構成
 
 ```bash
     /
     ├── README.md
-    ├── app
+    ├── app（Next.jsのAppRouterを使用）
     │   ├── about
     │   │   ├── page.module.scss
-    │   │   └── page.tsx
+    │   │   └── page.tsx（aboutページ）
     │   ├── api
     │   │   └── submitToGoogleSpreadSheet
-    │   │       └── route.ts
+    │   │       └── route.ts（APIのルート）
     │   ├── components
     │   │   ├── Footer
     │   │   │   ├── index.module.scss
@@ -127,31 +133,31 @@
     │   │   ├── TimerAndAPIPostButton
     │   │   │   ├── index.module.scss
     │   │   │   └── index.tsx
-    │   │   └── ui
+    │   │   └── ui（shadcn-uiコンポーネント）
     │   │       ├── button.tsx
     │   │       ├── form.tsx
     │   │       ├── label.tsx
     │   │       └── textarea.tsx
     │   ├── data
-    │   │   └── texts.ts
+    │   │   └── texts.ts（文章とレイアウト量の配列）
     │   ├── favicon.ico
     │   ├── fonts
     │   │   ├── GeistMonoVF.woff
     │   │   ├── GeistVF.woff
-    │   │   └── hiragino-kaku-gothic-w3.woff
+    │   │   └── hiragino-kaku-gothic-w3.woff（先行研究で使用されていたヒラギノ角ゴシックProW3）
     │   ├── globals.css
     │   ├── layout.tsx
     │   ├── layouted
     │   │   ├── page.module.scss
-    │   │   └── page.tsx
+    │   │   └── page.tsx（テキスト整形後のページ）
     │   ├── lib
     │   │   └── utils.ts
     │   ├── metadataConfig.ts
     │   ├── page.module.css
     │   ├── page.tsx
-    │   └── variables.scss
+    │   └── variables.scss（フォントサイズ、行間、色などの変数）
     ├── components.json
-    ├── googleApi_authData.json
+    ├── googleApi_authData.json（GoogleAPIの認証データ）
     ├── next-env.d.ts
     ├── next.config.mjs
     ├── package-lock.json
@@ -171,7 +177,7 @@
 
 ## 採用したデザインシステム
 
-このプロジェクトでは、デザインシステムとして以下のリソースを採用しています。
+このプロジェクトでは、以下のデザインシステムを採用しています。
 
 1. **デジタル庁 デザインシステム**: 日本のデジタル庁が提供するデザインシステムで、公式ウェブサイトのデザインガイドラインに従っています。詳細は[こちら](https://design.digital.go.jp/)をご覧ください。
 
