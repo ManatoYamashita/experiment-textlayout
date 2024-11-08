@@ -29,7 +29,7 @@
 
 - **Next.js(Approuter) with TypeScript(JavaScript)**: Node.js上に構築されたオープンソースのWebアプリケーションフレームワーク。Typescriptで記述されています。
 - **BudouX(機械学習モデル)**: サードパーティのAPIや分かち書きライブラリに依存せずに動作する、20KB程度で計量な機械学習モデルです。文節間改行のために使用します。
-   -- 当初はKuromojiライブラリで形態素解析を行なっていたが、煩雑だったため軽量なBudouXに変更
+   -- 当初は**Kuromoji.js**ライブラリで形態素解析を行なっていたが、煩雑だったため軽量なBudouXに変更
 - **Google APIs**: Googleスプレッドシートにフォームデータを送信するために使用しています。日時、表示されている文章の種類、適用されたインデント量、読了時間を計測し、Googleスプレッドシートに記録します。
 - **SASS(SCSS)**: アプリケーション全体のデザインを提供。さらに一部の単純なアニメーションとレスポンシブデザインを実現しています。
 - **shadcn/ui(Radix, tailWindCSS)**: 一貫したデザインのユーザーインターフェースとデザインシステムの構築に使用します。
@@ -86,7 +86,7 @@
 
 - 文章の種類
 
-    -- 星新一のショートショート作品「ボッコちゃん」から以下8作品をランダムに選択しています。
+    - 星新一のショートショート作品「ボッコちゃん」から以下8作品をランダムに選択しています。
         - 『狙われた星』
         - 『盗んだ書類』
         - 『約束』
@@ -98,74 +98,76 @@
 
 ## ディレクトリ構成
 
-/
-├── README.md
-├── app
-│   ├── about
-│   │   ├── page.module.scss
-│   │   └── page.tsx
-│   ├── api
-│   │   └── submitToGoogleSpreadSheet
-│   │       └── route.ts
-│   ├── components
-│   │   ├── Footer
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   ├── Header
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   ├── Loading
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   ├── StartButton
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   ├── TextLayout
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   ├── TimerAndAPIPostButton
-│   │   │   ├── index.module.scss
-│   │   │   └── index.tsx
-│   │   └── ui
-│   │       ├── button.tsx
-│   │       ├── form.tsx
-│   │       ├── label.tsx
-│   │       └── textarea.tsx
-│   ├── data
-│   │   └── texts.ts
-│   ├── favicon.ico
-│   ├── fonts
-│   │   ├── GeistMonoVF.woff
-│   │   ├── GeistVF.woff
-│   │   └── hiragino-kaku-gothic-w3.woff
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── layouted
-│   │   ├── page.module.scss
-│   │   └── page.tsx
-│   ├── lib
-│   │   └── utils.ts
-│   ├── metadataConfig.ts
-│   ├── page.module.css
-│   ├── page.tsx
-│   └── variables.scss
-├── components.json
-├── googleApi_authData.json
-├── next-env.d.ts
-├── next.config.mjs
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── public
-│   └── images
-│       ├── ogp.png
-│       ├── sekilab-logo.webp
-│       ├── text-layout-system.webp
-│       └── usage.webp
-├── robots.txt
-├── sitemap.xml
-├── tailwind.config.js
-└── tsconfig.json
+```bash
+    /
+    ├── README.md
+    ├── app
+    │   ├── about
+    │   │   ├── page.module.scss
+    │   │   └── page.tsx
+    │   ├── api
+    │   │   └── submitToGoogleSpreadSheet
+    │   │       └── route.ts
+    │   ├── components
+    │   │   ├── Footer
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   ├── Header
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   ├── Loading
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   ├── StartButton
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   ├── TextLayout
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   ├── TimerAndAPIPostButton
+    │   │   │   ├── index.module.scss
+    │   │   │   └── index.tsx
+    │   │   └── ui
+    │   │       ├── button.tsx
+    │   │       ├── form.tsx
+    │   │       ├── label.tsx
+    │   │       └── textarea.tsx
+    │   ├── data
+    │   │   └── texts.ts
+    │   ├── favicon.ico
+    │   ├── fonts
+    │   │   ├── GeistMonoVF.woff
+    │   │   ├── GeistVF.woff
+    │   │   └── hiragino-kaku-gothic-w3.woff
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── layouted
+    │   │   ├── page.module.scss
+    │   │   └── page.tsx
+    │   ├── lib
+    │   │   └── utils.ts
+    │   ├── metadataConfig.ts
+    │   ├── page.module.css
+    │   ├── page.tsx
+    │   └── variables.scss
+    ├── components.json
+    ├── googleApi_authData.json
+    ├── next-env.d.ts
+    ├── next.config.mjs
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config.js
+    ├── public
+    │   └── images
+    │       ├── ogp.png
+    │       ├── sekilab-logo.webp
+    │       ├── text-layout-system.webp
+    │       └── usage.webp
+    ├── robots.txt
+    ├── sitemap.xml
+    ├── tailwind.config.js
+    └── tsconfig.json
+```
 
 ## 採用したデザインシステム
 
