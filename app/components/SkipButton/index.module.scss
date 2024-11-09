@@ -1,0 +1,38 @@
+.formContainer {
+    will-change: visibility;
+    overflow: hidden;
+    visibility: hidden;
+    transition: all .2s;
+    padding: .5rem;
+
+    .label {
+        font-size: 15px;
+        color: #333;
+        cursor: pointer;
+    }
+    
+    .textarea {
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .btn {
+        padding: 10px 20px;
+        margin-top: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all .2s;
+    }
+      
+    .btnInverted {
+        background-color: whitesmoke;
+        border: 1px solid black;
+    }
+    
+    .btnInverted > .strong,
+    .btnInverted > .small {
+        color: black;
+        font-weight: normal;
+    }
+}

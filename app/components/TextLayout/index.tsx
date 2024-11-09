@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { loadDefaultJapaneseParser } from 'budoux';
 import { useSearchParams } from 'next/navigation';
 import TimerAndAPIPostButton from '@/components/TimerAndAPIPostButton';
+import SkipButton from '@/components/SkipButton';
 
 const Loading = dynamic(() => import('@/components/Loading'), { ssr: false });
 
@@ -152,7 +153,8 @@ const TextLayout: React.FC<TextLayoutProps> = ({ text, devicePpi }) => {
           })
         )}
       </div>
-      <div className="text-center">
+      <div className="flex flex-col md:flex-row items-center place-content-evenly gap-2">
+        <SkipButton currentText={text} currentMargin={randomMargin} />  
         <TimerAndAPIPostButton currentText={text} currentMargin={randomMargin} />
       </div>
     </div>
