@@ -33,9 +33,9 @@ export default function TimerAndAPIPostButton({ currentText, currentMargin }: Bu
         const result = await response.json();
         console.log(result.message);
       } else {
-        console.error('サーバーエラーが発生しました');
+        console.error('サーバーエラーが発生しました。または、SKIPされました。');
         setHasActionBeenPerformed(false);
-        alert('データの送信に失敗しました。もう一度お試しください。');
+        // alert('SKIPされました。次の試行に移ります。');
       }
     } catch (error) {
       console.error('エラーが発生しました:', error);
